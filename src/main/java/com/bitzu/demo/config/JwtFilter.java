@@ -21,7 +21,6 @@ import java.util.List;
 @Component
 public class JwtFilter extends OncePerRequestFilter {
 
-    // Gera a chave secreta segura par// Pelo menos 64 caracteres para HS512
     private static final String SECRET = "eE9WJq83F9s0VWxD1Cz6hTwRL4xMZ9BqT2nH4MkFxYoVpJgNsLw5TrUw1HqAj7Xm";
     SecretKey secretKey = Keys.hmacShaKeyFor(SECRET.getBytes(StandardCharsets.UTF_8));
 
