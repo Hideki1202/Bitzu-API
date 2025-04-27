@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
-public interface TagRepository extends JpaRepository<Tag, Integer> {
+public interface TagRepository extends JpaRepository<Tag, Long> {
 
 }
