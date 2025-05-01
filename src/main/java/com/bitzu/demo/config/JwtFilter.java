@@ -32,7 +32,6 @@ public class JwtFilter extends OncePerRequestFilter {
         String path = request.getRequestURI();
         System.out.println(path.startsWith("/auth/"));
 
-        // Permite o fluxo de requisições para /auth/ e /usuario/create
         if (path.startsWith("/auth/") || path.equals("/usuario/create")) {
             filterChain.doFilter(request, response);
             return;
@@ -52,14 +51,11 @@ public class JwtFilter extends OncePerRequestFilter {
 
                 String email = claims.getSubject();
 
-                // Cria um objeto de autenticação com a autoridade "ROLE_USER"
                 UsernamePasswordAuthenticationToken auth =
                         new UsernamePasswordAuthenticationToken(email, null, List.of());
 
-                // Define a autenticação no contexto de segurança
                 SecurityContextHolder.getContext().setAuthentication(auth);
             } catch (Exception e) {
-                // Se ocorrer erro na validação do token, limpa o contexto de segurança e retorna erro 401
                 System.out.println("Erro ao processar o token: " + e.getMessage());
                 SecurityContextHolder.clearContext();
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
@@ -67,7 +63,6 @@ public class JwtFilter extends OncePerRequestFilter {
             }
         }
 
-        // Continua o filtro
         filterChain.doFilter(request, response);
     }
 }

@@ -16,6 +16,8 @@ public class User {
     private String telefone;
     private String email;
     private String senha;
+    @Column(columnDefinition = "text", nullable = true)
+    private String link = "https://drcdjxojoyrftwrhsolr.supabase.co/storage/v1/object/sign/imagesbucket/default_profile_icon.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2JmOThkODRiLTZkM2MtNDkwZS04MDZmLTJmNTI5ZjY3MDdlMCJ9.eyJ1cmwiOiJpbWFnZXNidWNrZXQvZGVmYXVsdF9wcm9maWxlX2ljb24ucG5nIiwiaWF0IjoxNzQ2MDA5MzE0LCJleHAiOjE3Nzc1NDUzMTR9.6Yv4lb00NAtqANx7EKjSMIMHT71zUBb63N5IGL7JA0g";
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private Date dataNascimento;
 
@@ -37,6 +39,16 @@ public class User {
         this.telefone = telefone;
         this.email = email;
         this.senha = senha;
+        this.dataNascimento = dataNascimento;
+    }
+
+    public User(Long id, String username, String telefone, String email, String senha, String link, Date dataNascimento) {
+        this.id = id;
+        this.username = username;
+        this.telefone = telefone;
+        this.email = email;
+        this.senha = senha;
+        this.link = link;
         this.dataNascimento = dataNascimento;
     }
 
@@ -87,5 +99,14 @@ public class User {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
 
 }

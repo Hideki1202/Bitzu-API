@@ -15,7 +15,7 @@ public class Tag {
     private String tag;
 
     @ManyToMany(mappedBy = "tags")
-    @JsonIgnore  
+    @JsonIgnore
     private List<Project> projects;
 
     public Long getId() {
